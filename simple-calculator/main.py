@@ -23,21 +23,37 @@ operators = {
 
 def validate_operator_input():
   while True:
-    user_input = input("Pick an operation:\n")
-    if user_input in operators.keys():
-      return user_input
-    else:
-      print("Invalid operator. Please enter a valid operator.")
+      user_input = input("Pick an operation:\n")
+      if user_input in operators.keys():
+          return user_input
+      else:
+          print("Invalid operator. Please enter a valid operator.")
 
+
+def validate_cont_input(user_input):
+  while user_input.lower() not in ['y', 'n']:
+      print("Invalid input. Please enter 'y' or 'n'.")
+      user_input = input()
+  return user_input.lower()
 
 first_num = int(input("What's the first number?\n"))
 
-print('\n'.join(operators.keys()))
+cont_cal = True
 
-operator = validate_operator_input()
+while cont_cal:
+  print('\n'.join(operators.keys()))
+  operator = validate_operator_input()
+  
+  second_num = int(input("What's the next number?\n"))
+  
+  result = operators[operator](first_num, second_num)
+  print(f"{first_num} {operator} {second_num} = {result}")
 
-second_num = int(input("What's the next number?\n"))
+  first_num = result
+  
+  user_input = input("Would you like to do another calculation? (y/n)\n")
+  cont_cal = validate_cont_input(user_input) == 'y'
 
-result = operators[operator](first_num, second_num)
+print("Thanks for using the calculator!")  
 
-print(f"{first_num} {operator} {second_num} = {result}")
+  

@@ -9,10 +9,7 @@ def pick_random_account():
   return choice(data)
 
 def compare_followers(followers_a, followers_b):
-  if followers_a > followers_b:
-    return 'A'
-  else:
-    return 'B'
+  return 'A' if followers_a > followers_b else 'B'
 
 def print_versus(account_a, account_b):
   print(f"Compare A: {account_a['name']}, a {account_a['description']}, from {account_a['country']}.")

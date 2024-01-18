@@ -20,27 +20,26 @@ def print_versus(account_a, account_b):
 def main():
   print(logo)
   score = STARTING_SCORE
-  game_over = BEGINING_GAME
-  account_a = pick_random_account()
-  account_b = pick_random_account()
-
-  while account_b == account_a:
-    account_b = pick_random_account()
   
-  while not game_over:
+  while True:
+    account_a = pick_random_account()
+    account_b = pick_random_account()
+
+    while account_b == account_a:
+      account_b = pick_random_account()
+    
     print_versus(account_a, account_b)
+  
     guess = input("Who has more followers? Type 'A' or 'B': ")
     winner = compare_followers(int(account_a['follower_count']), int(account_b['follower_count']))
     
     if guess == winner:
       score += 1
-      account_a = account_b
-      account_b = pick_random_account()
       clear()
       print(f"You're right! Current score: {score}.")
     else:
-      game_over = True
       clear()
       print(f"Sorry, that's wrong. Final score: {score}")
+      break
 
 main()

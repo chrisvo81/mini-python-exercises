@@ -1,13 +1,12 @@
 from art import logo, vs
 from game_data import data
-from random import randint
+from random import choice
 from replit import clear
 
 STARTING_SCORE = 0
-BEGINING_GAME = False
 
 def pick_random_account():
-  return data[randint(0, len(data) - 1)]
+  return choice(data)
 
 def compare_followers(followers_a, followers_b):
   if followers_a > followers_b:

@@ -2,6 +2,8 @@
 
 > Inspired by : http://www.higherlowergame.com/
 
+## Classic Version
+
 The classic version of higher lower is the game where you guess and compare one search term versus the other search term.
 
 For example:
@@ -12,3 +14,7 @@ As a player, you have to guess if the second one has higher or lower searches th
 This game will continue on as long as you keep getting your guess correct.
 
 As soon as your guess is wrong, the game will end. The score will be show to you when the game is end.
+
+## This Version
+
+In this version, you will compare who has the higher followers on instagram.

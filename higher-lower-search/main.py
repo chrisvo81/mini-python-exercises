@@ -42,4 +42,5 @@ def main():
       print(f"Sorry, that's wrong. Final score: {score}")
       break
 
-main()
+if __name__ == "__main__":
+  main()

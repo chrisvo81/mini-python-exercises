@@ -1,12 +1,22 @@
 # Mini Python Exercises
+
 Random python exercise practices.
 Mostly I practice with Replit, but I will import it here to keep track :)
 
 ASCII Art comes from : https://ascii.co.uk/art
 
+## Install packages
+
+To install packages that required to run the games in this repo. Please check the `requirements.txt` and run this line of command
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Projects list
 
 ### 1. Treasure Island
+
 ASCII Art: [Treasure](https://ascii.co.uk/art/treasure)
 
 A sort of choose your own adventure game such as the Choose Your Own Adventure books where you flip to a different page if you make a particular choice.

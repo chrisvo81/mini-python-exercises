@@ -5,11 +5,13 @@
 #
 from random import random
 
-from IPython.display import clear_output
+# from IPython.display import clear_output
+import os
 
 
 def display_board(board):
-    clear_output
+    # clear_output
+    os.system('clear')
     # Set board as a list with index 1 - 9
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
     print(board[4] + ' | ' + board[5] + ' | ' + board[6])

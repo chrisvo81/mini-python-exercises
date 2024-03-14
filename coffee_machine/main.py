@@ -1,3 +1,4 @@
+import time
 import inquirer
 import sys
 import os
@@ -73,7 +74,8 @@ def print_report():
     print(f"Water: {resources['water']}ml")
     print(f"Milk: {resources['milk']}ml")
     print(f"Coffee: {resources['coffee']}g")
-    # print(f"Money: ${resources['money']}")
+    print(f"Total $ making today: ${resources['money']:.2f}")
+    print()
     
 # Calculating coins value
 def calculate_input_coins():
@@ -81,7 +83,6 @@ def calculate_input_coins():
     for coin, value in coins.items():
         num_coins = int(input(f"How many {coin}?:"))
         total_value += num_coins * value
-    resources["money"] = total_value
     return total_value
 
 # Check if the resources sufficient when user order a drink
@@ -93,19 +94,26 @@ def check_resources(drink):
     return True
 
 # Check transaction successful
-def transaction_successful(drink_cost, user_inserted_value):
+def transaction_process(drink_cost, user_inserted_value):
     if user_inserted_value >= drink_cost:
         change = round(user_inserted_value - drink_cost, 3)
         print(f"Here is ${change:.2f} in change.")
-        return True
+        resources['money'] += drink_cost
+        return user_inserted_value
     else:
         print("Sorry that's not enough money. Money refunded")
-        return False
+        return 0
 
-
+# Printing message with timer
+def print_with_timer(message, timer=3):
+    print(message, end='')
+    for i in range(timer):
+        print('.', end='', flush=True)
+        time.sleep(1)
+    print()  # Print a newline at the end
     
 # Making coffee
-def make_coffee(drink):
+def machine_processing(drink):
     resources_available = check_resources(drink)
     if (resources_available):
         print(f"{drink.capitalize()} costs ${MENU[drink]['cost']:.2f}")
@@ -113,7 +121,10 @@ def make_coffee(drink):
         drink_cost = MENU[drink]["cost"]
         user_inserted_value = calculate_input_coins()
         print(f"Total inserted: ${user_inserted_value:.2f}")
-        transaction = transaction_successful(drink_cost, user_inserted_value)
+        transaction = transaction_process(drink_cost, user_inserted_value)
+        print_with_timer('Making coffee', 5) if bool(transaction) else None
+        print(f"Here is your {drink} ☕️ Enjoy!" if bool(transaction) else None)
+        time.sleep(3)
     else:
         print("Sorry, not enough resources")
 
@@ -125,21 +136,21 @@ def machine_prompt():
     return answer
 
 # Turn off machine
-def turn_off():
-    print("Machine is shutting off")
+def power_off():
+    print_with_timer("Machine is shutting off")
     exit()
 
 # Machine menu
 def machine_menu():
     while(True):
-        clear_terminal()
         user_selection = machine_prompt()
         if user_selection in MENU:
-            make_coffee(user_selection)
+            machine_processing(user_selection)
+            clear_terminal()
         elif user_selection == "report":
             print_report()
         elif user_selection == "off":
-            turn_off()
+            power_off()
             return False
 
 # Start prompting
@@ -150,12 +161,11 @@ def power_on():
         clear_terminal()
         machine_menu()
     else:
-        turn_off()
+        power_off()
 
 # Main function
 def main():
     power_on()
-    
         
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

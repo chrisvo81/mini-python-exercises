@@ -4,14 +4,17 @@
 # Tic Tac Toe game
 #
 from random import random
-
 # from IPython.display import clear_output
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from helpers.clear_terminal import clear_terminal
 
 
 def display_board(board):
     # clear_output
-    os.system('clear')
+    clear_terminal()
     # Set board as a list with index 1 - 9
     print(board[7] + ' | ' + board[8] + ' | ' + board[9])
     print(board[4] + ' | ' + board[5] + ' | ' + board[6])

@@ -1,5 +1,9 @@
 import inquirer
+import sys
 import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from helpers.clear_terminal import clear_terminal
 
 # Program Objective -----------------------------------------------
 # 1. Print Report
@@ -70,12 +74,7 @@ def print_report():
     print(f"Milk: {resources['milk']}ml")
     print(f"Coffee: {resources['coffee']}g")
     # print(f"Money: ${resources['money']}")
-
-# Turn off machine
-def turn_off():
-    print("Machine turned off")
-    exit()
-
+    
 # Calculating coins value
 def calculate_input_coins():
     total_value = 0
@@ -102,6 +101,8 @@ def transaction_successful(drink_cost, user_inserted_value):
     else:
         print("Sorry that's not enough money. Money refunded")
         return False
+
+
     
 # Making coffee
 def make_coffee(drink):
@@ -123,14 +124,38 @@ def machine_prompt():
     answer = inquirer.prompt(questions)["drink"]
     return answer
 
-def main():
-    user_selection = machine_prompt()
-    if user_selection in MENU:
-        make_coffee(user_selection)
-    elif user_selection == "report":
-        print_report()
-    elif user_selection == "off":
+# Turn off machine
+def turn_off():
+    print("Machine is shutting off")
+    exit()
+
+# Machine menu
+def machine_menu():
+    while(True):
+        clear_terminal()
+        user_selection = machine_prompt()
+        if user_selection in MENU:
+            make_coffee(user_selection)
+        elif user_selection == "report":
+            print_report()
+        elif user_selection == "off":
+            turn_off()
+            return False
+
+# Start prompting
+def power_on():
+    questions = [ inquirer.List('power', message="Power on the machine?", choices=['on', 'off'],), ]
+    answer = inquirer.prompt(questions)["power"]
+    if answer == "on":
+        clear_terminal()
+        machine_menu()
+    else:
         turn_off()
+
+# Main function
+def main():
+    power_on()
+    
         
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

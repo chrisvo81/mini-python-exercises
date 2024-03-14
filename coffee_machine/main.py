@@ -89,7 +89,7 @@ def calculate_input_coins():
 def check_resources(drink):
     for item, quantity in MENU[drink]["ingredients"].items():
         if resources[item] < quantity:
-            print(f"Sorry there is not enough {item}")
+            print(f"We ran out of {item}")
             return False
     return True
 
@@ -102,6 +102,7 @@ def transaction_process(drink_cost, user_inserted_value):
         return user_inserted_value
     else:
         print("Sorry that's not enough money. Money refunded")
+        # time.sleep(3)
         return 0
 
 # Printing message with timer
@@ -111,6 +112,12 @@ def print_with_timer(message, timer=3):
         print('.', end='', flush=True)
         time.sleep(1)
     print()  # Print a newline at the end
+
+# Remove ingredients from machine
+def making_coffee(drink):
+    print_with_timer('Making coffee', 5)
+    for ingredient in MENU[drink]["ingredients"]:
+        resources[ingredient] -= MENU[drink]["ingredients"][ingredient]
     
 # Making coffee
 def machine_processing(drink):
@@ -122,11 +129,12 @@ def machine_processing(drink):
         user_inserted_value = calculate_input_coins()
         print(f"Total inserted: ${user_inserted_value:.2f}")
         transaction = transaction_process(drink_cost, user_inserted_value)
-        print_with_timer('Making coffee', 5) if bool(transaction) else None
+        
+        making_coffee(drink) if bool(transaction) else None
         print(f"Here is your {drink} ☕️ Enjoy!" if bool(transaction) else None)
-        time.sleep(3)
     else:
         print("Sorry, not enough resources")
+    time.sleep(3)
 
 # Prompt for user input
 def machine_prompt():

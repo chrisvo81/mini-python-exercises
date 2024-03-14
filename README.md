@@ -13,6 +13,10 @@ To install packages that required to run the games in this repo. Please check th
 pip install -r requirements.txt
 ```
 
+## Packages List
+
+**PrettyTable**: https://github.com/jazzband/prettytable
+
 ## Projects list
 
 ### 1. Treasure Island
@@ -25,3 +29,5 @@ And then the story kind of evolves as you make your choices.
 In this project, I make a very simple version of that using what I learned about conditionals in Python.
 
 Read more inside the project
+
+#

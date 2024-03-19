@@ -66,5 +66,5 @@ def game():
     if not is_correct_answer and attempts == 0:
         print("You've run out of guesses, you lose.")
 
-
-game()
+if __name__ == '__main__':
+    game()

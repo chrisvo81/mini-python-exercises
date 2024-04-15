@@ -40,7 +40,7 @@ def main():
     # draw_square(tommy, 'left')
 
     for shape_side_n in range(3, 11):
-        draw_pentagon(shape_side_n)
+        draw_pentagon(timmy, shape_side_n)
 
     screen = Screen()
     screen.exitonclick()

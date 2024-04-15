@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import colorgram
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def filtered_colors(colors):
+    non_white_colors = []
+    for color in colors:
+        r, g, b = color.rgb.r, color.rgb.g, color.rgb.b
+        if not (r == 255 and g == 255 and b == 255):
+            non_white_colors.append(color)
+    return non_white_colors
+
+
+def main():
+    colors = colorgram.extract('colorgram')
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

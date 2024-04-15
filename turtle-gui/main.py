@@ -58,6 +58,14 @@ def random_walk(turtle):
         turtle.color(random_rgb_color())
 
 
+def make_spirograph(turtle):
+    for _ in range(0, 72):
+        turtle.speed('fastest')
+        turtle.circle(50)
+        turtle.left(5)
+        turtle.color(random_rgb_color())
+
+
 def main():
     # Use a breakpoint in the code line below to debug your script.
     timmy = create_turtle('green')
@@ -70,7 +78,9 @@ def main():
     #     draw_pentagon(timmy, shape_side_n)
     #     timmy.color(randomize_tk_color())
 
-    random_walk(timmy)
+    # random_walk(timmy)
+
+    make_spirograph(timmy)
 
     screen = Screen()
     screen.exitonclick()

@@ -1,4 +1,6 @@
 from turtle import Turtle, Screen
+from tk_colors import tk_color
+import random
 
 def create_turtle(input_colour='red'):
     turtle = Turtle()
@@ -31,6 +33,11 @@ def draw_pentagon(turtle, num_sides):
         turtle.right(angle)
 
 
+def randomize_color():
+    chosen_color = random.choice(tk_color)
+    return chosen_color
+
+
 def main():
     # Use a breakpoint in the code line below to debug your script.
     timmy = create_turtle('green')
@@ -41,6 +48,7 @@ def main():
 
     for shape_side_n in range(3, 11):
         draw_pentagon(timmy, shape_side_n)
+        timmy.color(randomize_color())
 
     screen = Screen()
     screen.exitonclick()

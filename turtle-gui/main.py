@@ -24,13 +24,23 @@ def draw_square(turtle, turn_direction='right'):
         turtle.forward(100)
 
 
+def draw_pentagon(turtle, num_sides):
+    angle = 360 / num_sides
+    for _ in range(num_sides):
+        turtle.forward(100)
+        turtle.right(angle)
+
+
 def main():
     # Use a breakpoint in the code line below to debug your script.
     timmy = create_turtle('green')
-    forward_dash_line(timmy)
+    # forward_dash_line(timmy)
 
     # tommy = create_turtle()
     # draw_square(tommy, 'left')
+
+    for shape_side_n in range(3, 11):
+        draw_pentagon(shape_side_n)
 
     screen = Screen()
     screen.exitonclick()

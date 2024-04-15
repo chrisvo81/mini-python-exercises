@@ -2,6 +2,7 @@ from turtle import Turtle, Screen
 from tk_colors import tk_color
 import random
 
+
 def create_turtle(input_colour='red'):
     turtle = Turtle()
     turtle.shape('turtle')
@@ -38,6 +39,16 @@ def randomize_color():
     return chosen_color
 
 
+def random_walk(turtle):
+    direction = [0, 90, 180, 270]
+    turtle.pensize(15)
+    turtle.speed('fastest')
+    for _ in range(200):
+        turtle.setheading(random.choice(direction))
+        turtle.forward(random.randint(0, 80))
+        turtle.color(randomize_color())
+
+
 def main():
     # Use a breakpoint in the code line below to debug your script.
     timmy = create_turtle('green')
@@ -46,9 +57,11 @@ def main():
     # tommy = create_turtle()
     # draw_square(tommy, 'left')
 
-    for shape_side_n in range(3, 11):
-        draw_pentagon(timmy, shape_side_n)
-        timmy.color(randomize_color())
+    # for shape_side_n in range(3, 11):
+    #     draw_pentagon(timmy, shape_side_n)
+    #     timmy.color(randomize_color())
+
+    random_walk(timmy)
 
     screen = Screen()
     screen.exitonclick()

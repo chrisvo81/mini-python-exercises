@@ -34,9 +34,17 @@ def draw_pentagon(turtle, num_sides):
         turtle.right(angle)
 
 
-def randomize_color():
+def randomize_tk_color():
     chosen_color = random.choice(tk_color)
     return chosen_color
+
+
+def random_rgb_color():
+    red = random.randint(0, 255)
+    green = random.randint(0, 255)
+    blue = random.randint(0, 255)
+    rand_color = '#{:02x}{:02x}{:02x}'.format(red, green, blue)
+    return rand_color
 
 
 def random_walk(turtle):
@@ -46,7 +54,8 @@ def random_walk(turtle):
     for _ in range(200):
         turtle.setheading(random.choice(direction))
         turtle.forward(random.randint(0, 80))
-        turtle.color(randomize_color())
+        # turtle.color(randomize_tk_color())
+        turtle.color(random_rgb_color())
 
 
 def main():
@@ -59,7 +68,7 @@ def main():
 
     # for shape_side_n in range(3, 11):
     #     draw_pentagon(timmy, shape_side_n)
-    #     timmy.color(randomize_color())
+    #     timmy.color(randomize_tk_color())
 
     random_walk(timmy)
 

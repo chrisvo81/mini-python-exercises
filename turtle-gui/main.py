@@ -61,9 +61,18 @@ def random_walk(turtle):
 def make_spirograph(turtle):
     for _ in range(0, 72):
         turtle.speed('fastest')
-        turtle.circle(50)
+        turtle.circle(100)
         turtle.left(5)
         turtle.color(random_rgb_color())
+
+
+# Better function for making spirograph
+def make_spirograph_2(turtle, gap_size):
+    for _ in range(int(360 / gap_size)):
+        turtle.speed('fastest')
+        turtle.circle(100)
+        turtle.color(random_rgb_color())
+        turtle.setheading(turtle.heading() + gap_size)
 
 
 def main():
@@ -80,7 +89,8 @@ def main():
 
     # random_walk(timmy)
 
-    make_spirograph(timmy)
+    # make_spirograph(timmy)
+    make_spirograph_2(timmy, 5)
 
     screen = Screen()
     screen.exitonclick()

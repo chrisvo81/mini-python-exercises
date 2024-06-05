@@ -1,11 +1,13 @@
 from turtle import Turtle, Screen
 
+positions = [(0,0), (-20,0), (-40,0)]
+
 def setup_snake():
-    for i in range(3):
+    for pos in positions:
         turtle = Turtle(shape='square')
         turtle.color('white')
         turtle.penup()
-        turtle.goto(x=-i*20, y=0)
+        turtle.goto(pos)
 
 
 # Press the green button in the gutter to run the script.

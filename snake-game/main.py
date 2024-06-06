@@ -26,7 +26,7 @@ def game_on():
     is_crashed = False
     while not is_crashed:
         screen.update()
-        time.sleep(0.15)
+        time.sleep(0.125)
         snake.move()
 
     screen.exitonclick()

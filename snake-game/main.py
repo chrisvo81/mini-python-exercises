@@ -46,8 +46,8 @@ def game_on():
             scoreboard.game_over()
 
         # Detect collision with tail
-        for segment in snake.segments:
-            if snake.head.distance(segment) < 10 and segment != snake.head:
+        for segment in snake.segments[1:]:
+            if snake.head.distance(segment) < 10:
                 is_crashed = True
                 scoreboard.game_over()
 
